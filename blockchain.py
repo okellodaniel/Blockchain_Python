@@ -31,7 +31,7 @@ class Blockchain:
         return computed_hash
 
     def  add_block(self, block, proof):
-        previous_hash = self.lastblock.hash
+        previous_hash = self.last_block.hash
         if previous_hash != block.previous_hash:
             return False
         
@@ -48,8 +48,7 @@ class Blockchain:
             block_hash == block.compute_hash())
     
     def add_new_transaction(self, transaction):
-        self.unconfirmed_transactions.append(transaction)
-    
+        self.unconfirmed_transactions.append(transaction)   
 
     
     def mine(self):
@@ -60,7 +59,7 @@ class Blockchain:
 
         new_block = Block(index=last_block.index+1,
                         transactions=self.unconfirmed_transactions,
-                        timestamp = t()
+                        timestamp = t(),
                         previous_hash = last_block.hash
                         )
 

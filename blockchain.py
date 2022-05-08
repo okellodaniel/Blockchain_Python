@@ -29,3 +29,16 @@ class Blockchain:
         computed_hash = block.compute_hash
         
         return computed_hash
+
+    def  add_block(self, block, proof):
+        previous_hash = self.lastblock.hash
+        if previous_hash != block.previous_hash:
+            return False
+        
+        if not self.is_valid_proof(block, proof):
+            return False
+        
+        block.hash = proof
+        self.chain.append(block)
+
+        return True

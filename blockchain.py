@@ -42,3 +42,7 @@ class Blockchain:
         self.chain.append(block)
 
         return True
+    
+    def is_valid_proof(self, block, block_hash):
+        return (block_hash.startswith('0'*Blockchain.difficulty) and 
+            block_hash == block.compute_hash())

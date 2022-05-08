@@ -21,12 +21,12 @@ class Blockchain:
     
     difficulty = 2
 
-    def proof_of_work(self):
+    def proof_of_work(self, block):
         block.nonce = computed_hash = block.compute_hash()
 
         while not computed_hash.startswith('0'*Blockchain.difficulty):
-        block.nonce += 1
-        computed_hash = block.compute_hash
+            block.nonce += 1
+            computed_hash = block.compute_hash()
         
         return computed_hash
 

@@ -14,4 +14,7 @@ class Blockchain:
         genesis_block = Block(0, [], t(),"0")
         genesis_block.hash = genesis_block.compute_hash()
         self.chain.append(genesis_block)
-  
+    
+    @property
+    def last_block(self):
+        return self.chain[-1]
